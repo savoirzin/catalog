@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>catalog</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        html,body,h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dd,dt,p,div,header,section,footer,img,article,form,fieldset,select,a{ margin:0; padding:0;}
+        img {border-style: none;vertical-align:middle; max-width: 100%;}
+        img, fieldset, iframe {border:none; outline:none;}
+        legend {display:none;}
+        table {border-collapse: collapse;table-layout:fixed;}
+        fieldset{min-width:0;padding:0;margin:0;border:0;}
+        input:focus, select:focus, button:focus, textarea:focus {outline:none;}
+        ol, ul,li {list-style: none;}
+        a, a:hover {text-decoration:none;}
+        select{cursor: pointer; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-appearance:none;-moz-appearance:none;}
+        select::-ms-expand{
+            display:none;
+            /* IE 8 */
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            /* IE 5-7 */
+            filter: alpha(opacity=0);
+            /* Good browsers :) */
+            opacity:0;
+        }
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            select {background:#fff;}
+        }
+        input[type=text]::-ms-clear {display: none;}
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+        a , a:hover , a[href*="callto"]:hover, a[href*="mailto"]:hover{color:#333333;}
+        button{padding:0;border:0;background:transparent;}
+        button{cursor: pointer;}
+
+        /* ] style [ */
+
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        .mySwiper{padding-bottom: 50px;}
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            /*width: 100%;*/
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-pagination-fraction{
+            font-size: 20px;
+        }
+        .wrap{
+            position: relative;
+            height: 100%;
+
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/sk카달로그_page_1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/sk카달로그_page_2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/sk카달로그_page_3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/sk카달로그_page_4.jpg" alt=""></div>
+        </div>
+        <button class="swiper-button-next"></button>
+        <button class="swiper-button-prev"></button>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        keyboard: {
+            enabled: true,
+        },
+        mousewheel:true,
+        pagination: {
+            el: ".swiper-pagination",
+            type:"fraction"
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+</body>
+<!-- copyright (c) 2022 by savoirzin all rights reserved. -->
+</html>
