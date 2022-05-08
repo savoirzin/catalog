@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>catalog</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -85,8 +85,7 @@
         }
 
         .swiper-slide img {
-            display: block;
-            /*width: 100%;*/
+            display: inline-block;
             height: 100%;
             object-fit: cover;
         }
@@ -96,33 +95,73 @@
         .swiper-pagination-fraction{
             font-size: 20px;
         }
+        .swiper-button-next,
+        .swiper-button-prev{
+            top:0;height:100%;
+            background:pink;
+        }
         .wrap{
             position: relative;
             height: 100%;
-
         }
+
+        /* pic zoom */
+        @media all and (max-width:990px){
+            .swiper-slide img{
+                width:100%;
+                height: auto;
+            }
+            .swiper-button-next,
+            .swiper-button-prev{
+                display: none;
+            }
+            .zoomImg{
+                display: none!important;
+            }
+        }
+
     </style>
 </head>
 <body>
 <div class="wrap">
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/sk카달로그_page_1.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/sk카달로그_page_2.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/sk카달로그_page_3.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/sk카달로그_page_4.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/sk카달로그_page_5.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/sk카달로그_page_6.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/sk카달로그_page_7.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/sk카달로그_page_8.jpg" alt=""></div>
+            <!-- 이미지 들어갈 자리 -->
+            <div class="swiper-slide zoomer">
+                <img src="images/sk카달로그_page_1.jpg" alt="">
+            </div>
+            <div class="swiper-slide zoomer">
+                <img src="images/sk카달로그_page_2.jpg" alt="">
+            </div>
+            <div class="swiper-slide zoomer">
+                <img src="images/sk카달로그_page_3.jpg" alt="">
+            </div>
+            <div class="swiper-slide zoomer">
+                <img src="images/sk카달로그_page_4.jpg" alt="">
+            </div>
+            <div class="swiper-slide zoomer">
+                <img src="images/sk카달로그_page_5.jpg" alt="">
+            </div>
+            <div class="swiper-slide zoomer">
+                <img src="images/sk카달로그_page_6.jpg" alt="">
+            </div>
+            <div class="swiper-slide zoomer">
+                <img src="images/sk카달로그_page_7.jpg" alt="">
+            </div>
+            <div class="swiper-slide zoomer">
+                <img src="images/sk카달로그_page_8.jpg" alt="">
+            </div>
         </div>
         <button class="swiper-button-next"></button>
         <button class="swiper-button-prev"></button>
         <div class="swiper-pagination"></div>
     </div>
 </div>
+<script src="js/jquery-2.2.4.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="js/jquery.zoom.min.js"></script>
 <script>
+    //slide
     var swiper = new Swiper(".mySwiper", {
         slidesPerView : 2,
         slidesPerGroup :2,
@@ -140,7 +179,26 @@
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
+        breakpoints: {
+            300: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+            },
+            990: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+
+        },
     });
+    //zoom
+    $(document).ready(function (){
+        $('.zoomer').zoom({
+            on:'click',
+            magnify:0.5
+        });
+    });
+
 </script>
 </body>
 <!-- copyright (c) 2022 by savoirzin all rights reserved. -->
