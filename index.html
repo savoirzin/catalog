@@ -114,7 +114,7 @@
                 display: none;
             }
         }
-        @media all and(max-width:1400px){
+        @media all and (max-width:1280px){
             .zoomImg{
                 display: none!important;
             }
@@ -161,53 +161,86 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="js/jquery.zoom.min.js"></script>
 <script>
-    //zoom
-    $(document).ready(function (){
-        $('.zoomer').zoom({
-            on:'click',
-            magnify:0.5
-        });
-    });
-    //slide
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView : 2,
-        slidesPerGroup :2,
-        spaceBetween: 30,
-        loopFillGroupWithBlank : true,
-        keyboard: {
-            enabled: true,
-        },
-        // mousewheel:true,
-        pagination: {
-            el: ".swiper-pagination",
-            type:"fraction"
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-            300: {
-                slidesPerView: 1,
-                spaceBetween: 0,
-            },
-            990: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
 
-        },
-        zoom: {
-            maxRatio: 1.2,
-            minRation: 1
-        },
-        on: {
-            slideChangeTransitionEnd: function () {
-                console.log('clicked!')
-                this.zoom.in();
-            }
-        },
-    });
+
+    /* [html 최초 로드 및 이벤트 상시 대기 실시] */
+    window.onload = function() {
+        //slide
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView : 2,
+            slidesPerGroup :2,
+            spaceBetween: 30,
+            loopFillGroupWithBlank : true,
+            keyboard: {
+                enabled: true,
+            },
+            // mousewheel:true,
+            pagination: {
+                el: ".swiper-pagination",
+                type:"fraction"
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                300: {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                },
+                990: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+
+            },
+            zoom: {
+                maxRatio: 1.2,
+                minRation: 1
+            },
+            on: {
+                slideChangeTransitionEnd: function () {
+                    console.log('clicked!')
+                    this.zoom.in();
+                }
+            },
+        });
+
+        resizeComplete();
+    };
+
+
+
+
+    let resizeTimer = null;
+
+
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resizeComplete, 300);
+    }, false);
+
+
+    //이벤트함수정의
+    function resizeComplete(){
+
+
+        //화면 해상도 확인
+        var screenWidth = screen.availWidth;
+        if (screenWidth >= 1280){
+            console.log("범위 이상");
+            //zoom
+            $(document).ready(function (){
+                $('.zoomer').zoom({
+                    on:'click',
+                    magnify:0.5
+                });
+            });
+        }
+
+    }
+
+
 
 
 </script>
