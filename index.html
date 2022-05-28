@@ -159,6 +159,13 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="js/jquery.zoom.min.js"></script>
 <script>
+    //zoom
+    $(document).ready(function (){
+        $('.zoomer').zoom({
+            on:'click',
+            magnify:0.5
+        });
+    });
     //slide
     var swiper = new Swiper(".mySwiper", {
         slidesPerView : 2,
@@ -168,7 +175,7 @@
         keyboard: {
             enabled: true,
         },
-        mousewheel:true,
+        // mousewheel:true,
         pagination: {
             el: ".swiper-pagination",
             type:"fraction"
@@ -188,14 +195,18 @@
             },
 
         },
+        zoom: {
+            maxRatio: 1.2,
+            minRation: 1
+        },
+        on: {
+            slideChangeTransitionEnd: function () {
+                console.log('clicked!')
+                this.zoom.in();
+            }
+        },
     });
-    //zoom
-    $(document).ready(function (){
-        $('.zoomer').zoom({
-            on:'click',
-            magnify:0.5
-        });
-    });
+
 
 </script>
 </body>
